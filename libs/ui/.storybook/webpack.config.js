@@ -29,8 +29,17 @@ module.exports = async ({ config, mode }) => {
   ].test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/;
 
   config.module.rules.push(
-
-    
+    {
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        "style-loader",
+        // Translates CSS into CommonJS
+        "css-loader",
+        // Compiles Sass to CSS
+        "sass-loader",
+      ],
+    },
     {
       test: /\.(png|jpe?g|gif|webp)$/,
       loader: require.resolve('url-loader'),
